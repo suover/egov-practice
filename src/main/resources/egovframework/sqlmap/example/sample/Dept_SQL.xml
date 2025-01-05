@@ -6,8 +6,12 @@
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="deptVO" type="egovframework.example.sample.service.DeptVO"/>
 	
-	<insert id="deptDAO.InsertDept">
-		insert into dept(deptno, dname, loc) values(#deptno#,#dname#,#loc#)
+	<insert id="deptDAO.insertDept">
+		INSERT INTO dept(deptno, dname, loc) values(#deptno#,#dname#,#loc#)
 	</insert>
+	
+	<select id="deptDAO.selectDeptList" resultClass="egovMap">
+            SELECT * FROM dept
+	</select>
 	
 </sqlMap>

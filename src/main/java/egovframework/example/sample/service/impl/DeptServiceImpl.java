@@ -1,5 +1,7 @@
 package egovframework.example.sample.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -15,9 +17,15 @@ public class DeptServiceImpl extends EgovAbstractServiceImpl implements DeptServ
 	private DeptDAO deptDAO;
 	
 	@Override
-	public String InsertDept(DeptVO vo) throws Exception {
+	public String insertDept(DeptVO vo) throws Exception {
 		
-		return deptDAO.InsertDept(vo);
+		return deptDAO.insertDept(vo);
+	}
+
+	@Override
+	public List<?> selectDeptList(DeptVO vo) throws Exception {
+		
+		return deptDAO.selectDeptList(vo);
 	}
 	
 }
