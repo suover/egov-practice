@@ -11,4 +11,20 @@
 		VALUES(#code#, #gid#, #name#)
 	</insert>
 	
+	<select id="codeDAO.selectCodesList" resultClass="egovMap">
+	    SELECT 
+	        code,
+	        CASE 
+	            WHEN gid = '1' THEN 'job'
+	            WHEN gid = '2' THEN 'hobby'
+	        END AS gid,
+	        name
+	    FROM codes
+	    ORDER BY gid ASC
+	</select>
+	
+	<select id="codeDAO.selectCodesCount" resultClass="java.lang.Integer">
+		SELECT COUNT(*) cnt FROM codes
+	</select>
+	
 </sqlMap>

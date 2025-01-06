@@ -50,7 +50,7 @@ function fn_submit() {
 		<tr>
 			<th colspan="2">
 				<button type="submit" onclick="fn_submit(); return false;">저장</button>
-				<button type="reset">취소</button>
+				<button type="button" onclick="location='codeList.do'">취소</button>
 			</th>
 		</tr>
 	</table>
