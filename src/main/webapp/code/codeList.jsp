@@ -23,6 +23,20 @@ th, td {
 }
 </style>
 
+<script>
+
+function fn_delete(code) {
+	if(confirm("정말 삭제하시겠습니까?")) {
+		location = "codeDelete.do?code="+code;
+	}
+}
+
+function fn_update(code) {
+	location = "codeModifyWrite.do?code="+code;
+}
+
+</script>
+
 <body>
 
 <table>
@@ -31,14 +45,16 @@ th, td {
 	<div style="width:100%; text-align:left;">Total : ${resultTotal} 개</div>
 	</caption>
 	<colgroup>
-		<col width="20%"/>
-		<col width="40%"/>
-		<col width="40%"/>
+		<col width="15%"/>
+		<col width="25%"/>
+		<col width="30%"/>
+		<col width="30%"/>
 	</colgroup>
 	<tr>
 		<th>번호</th>
 		<th>그룹명</th>
 		<th>코드명</th>
+		<th>구분</th>
 	</tr>
 	<c:set var="count" value="1"/>
 	<c:forEach var="list" items="${resultList}">
@@ -46,11 +62,15 @@ th, td {
 			<td>${count}</td>
 			<td>${list.gid}</td>
 			<td>${list.name}</td>
+			<td>
+				<button type="button" onclick="fn_update('${list.code}')">수정</button>
+				<button type="button" onclick="fn_delete('${list.code}')">삭제</button>
+			</td>
 		</tr>
 		<c:set var="count" value="${count+1}"/>
 	</c:forEach>
 	<tr>
-		<th colspan="3">
+		<th colspan="4">
 			<button type="button" onclick="location='codeWrite.do'">생성</button>
 		</th>
 	</tr>

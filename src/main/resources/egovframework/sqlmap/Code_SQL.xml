@@ -27,4 +27,19 @@
 		SELECT COUNT(*) cnt FROM codes
 	</select>
 	
+	<delete id="codeDAO.deleteCodes">
+		DELETE FROM codes
+		WHERE code=#code#
+	</delete>
+	
+	<select id="codeDAO.selectCodesDetail" resultClass="codeVO">
+		SELECT * FROM codes
+		WHERE code=#code#
+	</select>
+	
+	<update id="codeDAO.updateCodes">
+		UPDATE codes SET gid=#gid#, name=#name#
+		WHERE code=#code#
+	</update>
+	
 </sqlMap>
