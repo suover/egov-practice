@@ -11,7 +11,24 @@
 	</insert>
 	
 	<select id="deptDAO.selectDeptList" resultClass="egovMap">
-            SELECT * FROM dept
+      	SELECT * FROM dept
 	</select>
+	
+	<select id="deptDAO.selectDeptDetail" resultClass="deptVO">
+		SELECT * FROM dept
+		WHERE deptno=#deptno#
+	</select>
+	
+	<delete id="deptDAO.deleteDept">
+		DELETE FROM dept
+		WHERE deptno=#deptno#
+	</delete>
+	
+	<update id="deptDAO.updateDept">
+		UPDATE dept SET
+		dname=#dname#,
+		loc=#loc#
+		WHERE deptno=#deptno#
+	</update>
 	
 </sqlMap>

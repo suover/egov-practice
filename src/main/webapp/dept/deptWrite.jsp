@@ -36,6 +36,7 @@ th, td {
 	<tr>
 		<th colspan="2">
 			<button type="submit">저장</button>
+			<button type="button" onclick="location='deptList.do'">목록</button>
 		</th>
 	</tr>
 </table>

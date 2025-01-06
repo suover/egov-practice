@@ -37,7 +37,7 @@ public class DeptController {
 			System.out.println("저장실패");
 		}
 		
-		return "";
+		return "redirect:/deptList.do";
 	}
 	
 	@RequestMapping(value="/deptList.do")
@@ -47,5 +47,52 @@ public class DeptController {
 		model.addAttribute("resultList", list);
 		
 		return "dept/deptList";
+	}
+	
+	@RequestMapping(value="/deptDetail.do")
+	public String selectDeptDetail(int deptno, ModelMap model) throws Exception {
+		
+		DeptVO vo = deptService.selectDeptDetail(deptno);
+		model.addAttribute("deptVO", vo);
+		System.out.println("부선번호: " + vo.getDeptno());
+		
+		return "dept/deptDetail";
+	}
+	
+	@RequestMapping(value="/deptDelete.do")
+	public String deleteDept(int deptno) throws Exception {
+		
+		int result = deptService.deleteDept(deptno);
+		
+		if (result == 1) {
+			System.out.println("삭제완료");
+		} else {
+			System.out.println("삭제실패");
+		}
+		
+		return "redirect:/deptList.do";
+	}
+	
+	@RequestMapping(value="/deptModifyWrite.do")
+	public String selectDeptModify(int deptno, ModelMap model) throws Exception {
+		
+		DeptVO vo = deptService.selectDeptDetail(deptno);
+		model.addAttribute("vo", vo);
+		
+		return "dept/deptModifyWrite";
+	}
+	
+	@RequestMapping(value="/deptModifySave.do")
+	public String updateDept(DeptVO vo) throws Exception {
+		
+		int result = deptService.updateDept(vo);
+		
+		if (result == 1) {
+			System.out.println("수정완료");
+		} else {
+			System.out.println("수정실패");
+		}
+		
+		return "redirect:/deptDetail.do?deptno=" + vo.getDeptno();
 	}
 }
