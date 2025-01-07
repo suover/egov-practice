@@ -45,4 +45,16 @@
 		    </dynamic>
 	</select>
 	
+	<select id="boardDAO.selectNBoardDetail" resultClass="boardVO">
+		SELECT unq, title, name, content, 
+		DATE_FORMAT(rdate, '%Y-%m-%d') AS rdate 
+		FROM nboard
+		WHERE unq=#unq#
+	</select>
+	
+	<update id="boardDAO.updateNBoardHits">
+		UPDATE nboard SET hits=hits+1 
+		WHERE unq=#unq#
+	</update>
+	
 </sqlMap>
