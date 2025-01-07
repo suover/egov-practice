@@ -1,8 +1,11 @@
 package main.web;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -22,7 +25,7 @@ public class BoardController {
 	
 	@RequestMapping("/boardWriteSave.do")
 	@ResponseBody
-	public String insertBoard(BoardVO vo) throws Exception {
+	public String insertNBoard(BoardVO vo) throws Exception {
 		
 		System.out.println(vo.getTitle());
 		
@@ -36,5 +39,16 @@ public class BoardController {
 		}
 		
 		return msg;
+	}
+	
+	@RequestMapping("/boardList.do")
+	public String selectNBoardList(BoardVO vo, ModelMap model) throws Exception {
+		
+		List<?> list = boardService.selectNBoardList(vo);
+		model.addAttribute("resultList", list);
+		
+		System.out.println("list : " + list);
+		
+		return "board/boardList";
 	}
 }

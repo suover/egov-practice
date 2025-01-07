@@ -11,4 +11,10 @@
 		VALUES(#unq#, #title#, #pass#, #name#, #content#, #hits#, now())
 	</insert>
 	
+	<select id="boardDAO.selectNBoardList" resultClass="egovMap">
+		SELECT unq, title, name, hits, DATE_FORMAT(rdate, '%Y-%m-%d') AS rdate
+		FROM nboard
+		ORDER BY unq DESC
+	</select>
+	
 </sqlMap>
