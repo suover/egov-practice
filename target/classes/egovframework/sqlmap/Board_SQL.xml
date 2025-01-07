@@ -14,13 +14,35 @@
 	<select id="boardDAO.selectNBoardList" resultClass="egovMap">
 	    SELECT unq, title, name, hits, DATE_FORMAT(rdate, '%Y-%m-%d') AS rdate
 	    FROM nboard
+	    <dynamic prepend="WHERE">
+	        <isEqual property="searchGubun" compareValue="title">
+	            title LIKE CONCAT('%', #searchText#, '%')
+	        </isEqual>
+	        <isEqual property="searchGubun" compareValue="name">
+	            name LIKE CONCAT('%', #searchText#, '%')
+	        </isEqual>
+	        <isEqual property="searchGubun" compareValue="content">
+	            content LIKE CONCAT('%', #searchText#, '%')
+	        </isEqual>
+	    </dynamic>
 	    ORDER BY unq DESC
 	    LIMIT #startIndex#, #pageSize#
 	</select>
 	
 	<select id="boardDAO.selectNBoardTotal" resultClass="java.lang.Integer">
-		SELECT COUNT(*) AS total
-    	FROM nboard
+	    SELECT COUNT(*) AS total
+		    FROM nboard
+		    <dynamic prepend="WHERE">
+		        <isEqual property="searchGubun" compareValue="title">
+		            title LIKE CONCAT('%', #searchText#, '%')
+		        </isEqual>
+		        <isEqual property="searchGubun" compareValue="name">
+		            name LIKE CONCAT('%', #searchText#, '%')
+		        </isEqual>
+		        <isEqual property="searchGubun" compareValue="content">
+		            content LIKE CONCAT('%', #searchText#, '%')
+		        </isEqual>
+		    </dynamic>
 	</select>
 	
 </sqlMap>

@@ -33,14 +33,33 @@ th, td {
 	width:98%;
 	height:70px;
 }
+.div1 {
+	width: 600px;
+	text-align: center;
+	font-size:15pt;
+}
+.div2 {
+	width: 600px;
+	text-align: left;
+	font-size:8pt;
+}
 </style>
 <body>
 
 <table>
-	<caption>
-		<div>게시판 목록</div>
-		<div>Total : ${total}</div>
-	</caption>
+	<div class="div1">게시판 목록</div>
+	<div class="div2">Total : ${total}</div>
+	<div class="div2">
+		<form name="searchFrm" method="post" action="boardList.do">
+			<select name="searchGubun" id="searchGubun">
+				<option value="title">제목</option>
+				<option value="name">글쓴이</option>
+				<option value="content">내용</option>
+			</select>
+			<input type="text" name="searchText" id="searchText">
+			<button type="submit">검색</button>
+		</form>
+	</div>
 	<tr>
 		<th width="15%">번호</th>
 		<th width="40%">제목</th>
