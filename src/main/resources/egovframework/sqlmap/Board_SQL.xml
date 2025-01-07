@@ -57,4 +57,17 @@
 		WHERE unq=#unq#
 	</update>
 	
+	<update id="boardDAO.updateNBoard">
+		UPDATE nboard SET 
+			title=#title#,
+			name=#name#,
+			content=#content#
+		WHERE unq=#unq#
+	</update>
+	
+	<select id="boardDAO.selectNBoardPass" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM nboard
+		WHERE unq=#unq# AND pass=#pass#
+	</select>
+	
 </sqlMap>
