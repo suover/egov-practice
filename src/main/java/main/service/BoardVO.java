@@ -4,11 +4,33 @@ public class BoardVO {
 	private int unq;
 	private String title;
 	private String pass;
-	public String name;
-	public String content;
-	public int hits;
-	public String rdate;
+	private String name;
+	private String content;
+	private int hits;
+	private String rdate;
 	
+	private int viewPage = 1;
+	private int startIndex = 0;
+	private int pageSize = 10;
+	
+	public int getPageSize() {
+		return pageSize;
+	}
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+	}
+	public int getStartIndex() {
+		return startIndex;
+	}
+	public void setStartIndex(int startIndex) {
+		this.startIndex = startIndex;
+	}
+	public int getViewPage() {
+		return viewPage;
+	}
+	public void setViewPage(int viewPage) {
+		this.viewPage = viewPage;
+	}
 	public int getUnq() {
 		return unq;
 	}

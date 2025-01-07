@@ -12,9 +12,15 @@
 	</insert>
 	
 	<select id="boardDAO.selectNBoardList" resultClass="egovMap">
-		SELECT unq, title, name, hits, DATE_FORMAT(rdate, '%Y-%m-%d') AS rdate
-		FROM nboard
-		ORDER BY unq DESC
+	    SELECT unq, title, name, hits, DATE_FORMAT(rdate, '%Y-%m-%d') AS rdate
+	    FROM nboard
+	    ORDER BY unq DESC
+	    LIMIT #startIndex#, #pageSize#
+	</select>
+	
+	<select id="boardDAO.selectNBoardTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) AS total
+    	FROM nboard
 	</select>
 	
 </sqlMap>

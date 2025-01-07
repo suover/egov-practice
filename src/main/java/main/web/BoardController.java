@@ -44,8 +44,29 @@ public class BoardController {
 	@RequestMapping("/boardList.do")
 	public String selectNBoardList(BoardVO vo, ModelMap model) throws Exception {
 		
+		int pageSize = 10; //한 페이지당 개수
+		
+		int total = boardService.selectNBoardTotal(vo);
+		int totalPage = (int) Math.ceil((double)total/pageSize);
+		int viewPage = vo.getViewPage();
+		
+		if (viewPage > totalPage || viewPage < 1) {
+			viewPage = 1;
+		}
+		
+		int startIndex = (viewPage-1) * pageSize;
+		
+		vo.setStartIndex(startIndex);
+		vo.setPageSize(pageSize);
+		
+		int startRowNo = total - (viewPage - 1) * pageSize;
+		
 		List<?> list = boardService.selectNBoardList(vo);
+		
+		model.addAttribute("total", total);
+		model.addAttribute("totalPage", totalPage);
 		model.addAttribute("resultList", list);
+		model.addAttribute("rowNumber", startRowNo);
 		
 		System.out.println("list : " + list);
 		

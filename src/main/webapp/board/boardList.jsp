@@ -37,6 +37,10 @@ th, td {
 <body>
 
 <table>
+	<caption>
+		<div>게시판 목록</div>
+		<div>Total : ${total}</div>
+	</caption>
 	<tr>
 		<th width="15%">번호</th>
 		<th width="40%">제목</th>
@@ -45,7 +49,7 @@ th, td {
 		<th width="15%">조회수</th>
 	</tr>
 	
-	<c:set var="cnt" value="1"/>
+	<c:set var="cnt" value="${rowNumber}"/>
 	
 	<c:forEach var="result" items="${resultList}">
 		<tr align="center">
@@ -56,11 +60,17 @@ th, td {
 			<td><c:out value="${result.hits}"/></td>
 		</tr>
 		
-		<c:set var="cnt" value="${cnt+1}"/>
+		<c:set var="cnt" value="${cnt-1}"/>
 		
 	</c:forEach>
 
 </table>
+
+<div style="width:600px; margin-top:5px; text-align:center;">
+	<c:forEach var="i" begin="1" end="${totalPage}">
+		<a href="boardList.do?viewPage=${i}">${i}</a>
+	</c:forEach>
+</div>
 
 <div style="width:600px; margin-top:5px; text-align:right;">
 	<button type="button" onclick="location='boardWrite.do'">글쓰기</button>
