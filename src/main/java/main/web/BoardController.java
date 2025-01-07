@@ -73,7 +73,7 @@ public class BoardController {
 		return "board/boardList";
 	}
 	
-	@RequestMapping("boardDetail.do")
+	@RequestMapping("/boardDetail.do")
 	public String selectNBoardDetail(BoardVO vo, ModelMap model) throws Exception {
 		
 		//조회수 증가
@@ -90,7 +90,7 @@ public class BoardController {
 		return "board/boardDetail";
 	}
 	
-	@RequestMapping("boardModifyWrite.do")
+	@RequestMapping("/boardModifyWrite.do")
 	public String selectNBoardModifyWrite(BoardVO vo, ModelMap model) throws Exception {
 		
 		BoardVO boardVO = boardService.selectNBoardDetail(vo.getUnq());
@@ -99,7 +99,7 @@ public class BoardController {
 		return "board/boardModifyWrite";
 	}
 	
-	@RequestMapping("boardModifySave.do")
+	@RequestMapping("/boardModifySave.do")
 	@ResponseBody
 	public String updateNBoard(BoardVO vo) throws Exception {
 		
@@ -109,6 +109,30 @@ public class BoardController {
 		if (count == 1) {
 			result = boardService.updateNBoard(vo);
 		} else {
+			result = -1;
+		}
+		
+		return result+"";
+	}
+	
+	@RequestMapping("/passWrite.do")
+	public String passWrite(int unq, ModelMap model) {
+		
+		model.addAttribute("unq", unq);
+		
+		return "board/passWrite";
+	}
+	
+	@RequestMapping("/boardDelete.do")
+	@ResponseBody
+	public String deleteBoard(BoardVO vo) throws Exception {
+		
+		int result = 0;
+		int count = boardService.selectNBoardPass(vo);
+		
+		if (count == 1) {
+			result = boardService.deleteNBoard(vo);
+		} else if (count == 0) {
 			result = -1;
 		}
 		

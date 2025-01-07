@@ -111,7 +111,8 @@ function fn_submit() {
 	<tr>
 		<th colspan="2">
 			<button type="submit" onclick="fn_submit(); return false;">저장</button>
-			<button type="reset">취소</button>
+			<button type="reset">되돌리기</button>
+			<button type="button" onclick="location='boardDetail.do?unq=${boardVO.unq}'">뒤로가기</button>
 		</th>
 	</tr>
 </table>
