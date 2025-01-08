@@ -146,7 +146,7 @@ caption {
 	<tr>
 		<th><label for="birth">생년월일</label></th>
 		<td>
-			<input type="text" name="birth" id="birth" readonly>
+			<input type="text" name="birth" id="birth">
 		</td>
 	</tr>
 	<tr>
