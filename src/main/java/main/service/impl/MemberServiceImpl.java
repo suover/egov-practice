@@ -19,4 +19,10 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.insertMember(vo);
 	}
 
+	@Override
+	public int selectMemberIdCheck(String userId) throws Exception {
+		
+		return memberDAO.selectMemberIdCheck(userId);
+	}
+
 }

@@ -15,6 +15,33 @@ $( function() {
     changeYear: true
   });
   
+  $("#btn_idcheck").click(function(){
+	  var userId = $.trim($("#userId").val());
+	  if (userId == "") {
+		  alert("아이디를 입력해주세요.")
+		  $("#userId").focus();
+		  return false;
+	  }
+	  
+	  $.ajax({
+		type: "POST",
+		data: "userId="+userId,
+		url: "idcheck.do",
+		dataType: "text",
+		success: function(result) {
+			if (result == "ok") {
+				alert("사용 가능한 아이디입니다.");
+			} else {
+				alert("이미 사용중인 아이디입니다.");
+			}
+		},
+		error: function() {
+			alert("오류발생");
+		}
+	  });
+	  
+  });
+  
   $("#btn_submit").click(function(){
 	  
 	 var userId = $("#userId").val();
@@ -121,7 +148,7 @@ caption {
 		<th><label for="userId">아이디</label></th>
 		<td>
 			<input type="text" name="userId" id="userId" placeholder="아이디입력">
-			<button type="button">중복체크</button>
+			<button type="button" id="btn_idcheck">중복체크</button>
 		</td>
 	</tr>
 	<tr>
