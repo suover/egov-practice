@@ -16,4 +16,18 @@
 		WHERE userId=#userId#
 	</select>
 	
+	<select id="memberDAO.selectPostList" resultClass="egovMap">
+		SELECT CONCAT(
+		    '[', a1, ']', 
+		    ' ', a3, 
+		    ' ', a4, 
+		    ' ', a5, 
+		    ' ', a6, 
+		    ' ', a7
+		) AS addr
+		FROM post
+		WHERE a4 LIKE CONCAT('%', #dong#, '%')
+		   OR a5 LIKE CONCAT('%', #dong#, '%')
+	</select>
+	
 </sqlMap>
