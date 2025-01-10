@@ -6,4 +6,5 @@ public interface MemberService {
 	public String insertMember(MemberVO vo) throws Exception;
 	public int selectMemberIdCheck(String userId) throws Exception;
 	public List<?> selectPostList(String dong) throws Exception;
+	public int selectMemberCount(MemberVO vo) throws Exception;
 }

@@ -33,4 +33,10 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.selectPostList(dong);
 	}
 
+	@Override
+	public int selectMemberCount(MemberVO vo) throws Exception {
+		
+		return memberDAO.selectMemberCount(vo);
+	}
+
 }

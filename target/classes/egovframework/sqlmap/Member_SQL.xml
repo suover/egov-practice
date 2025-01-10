@@ -30,4 +30,8 @@
 		   OR a5 LIKE CONCAT('%', #dong#, '%')
 	</select>
 	
+	<select id="memberDAO.selectMemberCount" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM member WHERE userId=#userId# AND pass=#pass#
+	</select>
+	
 </sqlMap>
